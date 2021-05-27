@@ -1,0 +1,25 @@
+.topGames {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+  justify-content: center;
+  &__game {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+    justify-content: center;
+    width: 200px;
+    &__img {
+      width: 200px;
+      height: auto;
+    }
+    &__name {
+      display: flex;
+      text-align: center;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+  }
+}

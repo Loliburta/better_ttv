@@ -21,5 +21,5 @@ export const TopGames = () => {
     })();
   }, []);
 
-  return <div>{topGames}</div>;
+  return <div className="topGames">{topGames}</div>;
 };
