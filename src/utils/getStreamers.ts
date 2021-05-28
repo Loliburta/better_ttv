@@ -1,9 +1,13 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const oauthCode = process.env.REACT_APP_OAUTH_CODE;
-export const getTopGames = async (cursor: string) => {
-  let url = "https://api.twitch.tv/helix/games/top?first=100";
+
+export const getStreamers = async (cursor: string, gameId?: string) => {
+  let url = "https://api.twitch.tv/helix/streams?first=70";
   if (cursor) {
-    url = `${url}&after=${cursor}`;
+    url += `&after=${cursor}`;
+  }
+  if (gameId) {
+    url += `&game_id=${gameId}`;
   }
   const res = await fetch(url, {
     method: "GET",
@@ -13,7 +17,5 @@ export const getTopGames = async (cursor: string) => {
     }),
   });
   const result = await res.json();
-  console.log(result);
-
   return result;
 };

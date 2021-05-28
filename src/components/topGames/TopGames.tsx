@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTopGames } from "../../utils/getTopGames";
+import { getGames } from "../../utils/getGames";
 import { TopGame } from "./topGame/TopGame";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -8,7 +8,7 @@ export const TopGames = () => {
   const [cursor, setCursor] = useState("");
   const [len, setLen] = useState(0);
   const fetchGames = async () => {
-    let res = await getTopGames(cursor);
+    let res = await getGames(cursor);
     setCursor(await res.pagination.cursor);
     let top = await res.data;
     setLen(len + top.length);

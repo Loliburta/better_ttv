@@ -1,8 +1,7 @@
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const oauthCode = process.env.REACT_APP_OAUTH_CODE;
-
-export const getTopStreamers = async (cursor: string) => {
-  let url = "https://api.twitch.tv/helix/streams?first=70";
+export const getGames = async (cursor: string) => {
+  let url = "https://api.twitch.tv/helix/games/top?first=100";
   if (cursor) {
     url = `${url}&after=${cursor}`;
   }
@@ -14,5 +13,7 @@ export const getTopStreamers = async (cursor: string) => {
     }),
   });
   const result = await res.json();
+  console.log(result);
+
   return result;
 };

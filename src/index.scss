@@ -1,6 +1,11 @@
 //Fonts
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
+@import "./utils/Variables";
+@import "./components/navbar/Navbar";
+@import "./components/streamersForGame/StreamersForGame";
+@import "./components/topGames/TopGames.scss";
+@import "./components/topStreamers/TopStreamers";
 @import "./components/App";
 
 * {
