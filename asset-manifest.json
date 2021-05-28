@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/better_ttv/static/css/main.7890fa4a.chunk.css",
-    "main.js": "/better_ttv/static/js/main.1c5d2b24.chunk.js",
-    "main.js.map": "/better_ttv/static/js/main.1c5d2b24.chunk.js.map",
+    "main.css": "/better_ttv/static/css/main.f092d285.chunk.css",
+    "main.js": "/better_ttv/static/js/main.d87f252b.chunk.js",
+    "main.js.map": "/better_ttv/static/js/main.d87f252b.chunk.js.map",
     "runtime-main.js": "/better_ttv/static/js/runtime-main.1d77be84.js",
     "runtime-main.js.map": "/better_ttv/static/js/runtime-main.1d77be84.js.map",
-    "static/js/2.2ca5aa92.chunk.js": "/better_ttv/static/js/2.2ca5aa92.chunk.js",
-    "static/js/2.2ca5aa92.chunk.js.map": "/better_ttv/static/js/2.2ca5aa92.chunk.js.map",
+    "static/js/2.5f8bbdd8.chunk.js": "/better_ttv/static/js/2.5f8bbdd8.chunk.js",
+    "static/js/2.5f8bbdd8.chunk.js.map": "/better_ttv/static/js/2.5f8bbdd8.chunk.js.map",
     "index.html": "/better_ttv/index.html",
-    "static/css/main.7890fa4a.chunk.css.map": "/better_ttv/static/css/main.7890fa4a.chunk.css.map",
-    "static/js/2.2ca5aa92.chunk.js.LICENSE.txt": "/better_ttv/static/js/2.2ca5aa92.chunk.js.LICENSE.txt"
+    "static/css/main.f092d285.chunk.css.map": "/better_ttv/static/css/main.f092d285.chunk.css.map",
+    "static/js/2.5f8bbdd8.chunk.js.LICENSE.txt": "/better_ttv/static/js/2.5f8bbdd8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1d77be84.js",
-    "static/js/2.2ca5aa92.chunk.js",
-    "static/css/main.7890fa4a.chunk.css",
-    "static/js/main.1c5d2b24.chunk.js"
+    "static/js/2.5f8bbdd8.chunk.js",
+    "static/css/main.f092d285.chunk.css",
+    "static/js/main.d87f252b.chunk.js"
   ]
 }
