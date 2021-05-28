@@ -1,9 +1,10 @@
-import { TopGames } from "./topGames/TopGames";
 import { useState } from "react";
+import { Navbar } from "./navbar/Navbar";
+import { TopGames } from "./topGames/TopGames";
 import { TopStreamers } from "./topStreamers/TopStreamers";
 export const App = () => {
   const [visibleGames, setVisibleGames] = useState(true);
-  const [visiblePlayers, setVisiblePlayers] = useState(false);
+  const [,setVisiblePlayers] = useState(false);
   const handleClickGames = () => {
     setVisiblePlayers(false);
     setVisibleGames(true);
@@ -15,12 +16,13 @@ export const App = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="button">
         <div className="button__option" onClick={handleClickGames}>
-          Gry
+          Kategorie
         </div>
         <div className="button__option" onClick={handleClickPlayers}>
-          Gracze
+          Kanały na żywo
         </div>
       </div>
       {visibleGames ? <TopGames /> : <TopStreamers />}
