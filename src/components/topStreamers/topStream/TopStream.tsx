@@ -17,7 +17,7 @@ export const TopStream: React.FC<Props> = ({
   viewer_count,
 }) => {
   const url = thumbnail_url
-    .replace("{width}", "300")
+    .replace("{width}", "370")
     .replace("{height}", "200");
 
   return (

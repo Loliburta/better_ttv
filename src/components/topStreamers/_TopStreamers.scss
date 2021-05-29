@@ -1,7 +1,6 @@
 @import "../../utils/Variables.scss";
 
 .topStreamers {
-  border: 3px solid red;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,7 +8,6 @@
   &__stream {
     display: flex;
     flex-direction: column;
-    border: 2px solid blue;
     margin: 10px;
     justify-content: center;
     &__thumbnail {
@@ -33,7 +31,6 @@
       margin: 0 auto;
       text-align: flex-start;
       flex-direction: column;
-      border: 1px solid red;
       &__title {
         white-space: nowrap;
         overflow: hidden;
