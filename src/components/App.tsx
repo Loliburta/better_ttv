@@ -14,16 +14,20 @@ export const App = () => {
     <Router>
       <div>
         <Navbar />
-
         <Switch>
           <Redirect exact from="/" to="/better_ttv" />
           <Route path={["/better_ttv"]} exact>
             <Home />
           </Route>
-          <Route path="/better_ttv/StreamersForGame/:GameName/:GameId">
+          <Route
+            path={[
+              "/better_ttv/StreamersForGame/:GameName/:GameId",
+              "/StreamersForGame/:GameName/:GameId",
+            ]}
+          >
             <StreamersForGame />
           </Route>
-          <Route path="/better_ttv/Streamer/:Name">
+          <Route path={["/Streamer/:Name", "/better_ttv/Streamer/:Name"]}>
             <LiveStream />
           </Route>
         </Switch>
