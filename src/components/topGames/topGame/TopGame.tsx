@@ -9,7 +9,7 @@ export const TopGame: React.FC<Props> = ({ id, name, box_art_url }) => {
   return (
     <div className="topGames__game">
       <div>{id}</div>
-      <Link to={`better_ttv/StreamersForGame/${name}/${id}`}>
+      <Link to={`/better_ttv/StreamersForGame/${name}/${id}`}>
         <img
           src={url}
           loading="lazy"

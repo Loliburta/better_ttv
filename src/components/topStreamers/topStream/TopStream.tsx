@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface Props {
   game_name: string;
   language: string;
@@ -20,12 +22,14 @@ export const TopStream: React.FC<Props> = ({
 
   return (
     <div className="topStreamers__stream">
-      <div className="topStreamers__stream__thumbnail">
-        <img src={url} loading="lazy" alt="thumbnail" />
-        <div className="topStreamers__stream__thumbnail__count">
-          {viewer_count} widzów
+      <Link to={`/better_ttv/Streamer/${user_login}`}>
+        <div className="topStreamers__stream__thumbnail">
+          <img src={url} loading="lazy" alt="thumbnail" />
+          <div className="topStreamers__stream__thumbnail__count">
+            {viewer_count} widzów
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="topStreamers__stream__info">
         <div className="topStreamers__stream__info__title">{title}</div>
         <div className="topStreamers__stream__info__username">{user_login}</div>
