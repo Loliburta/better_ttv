@@ -3,44 +3,79 @@
   display: flex;
   width: 100vw;
   max-width: 100%;
+  position: relative;
   background-color: black;
   justify-content: center;
   align-items: center;
-  &__search {
-    width: clamp(200px, 35vw, 400px);
-    height: clamp(35px, 6vw, 45px);
-    font-size: 14px;
-    font-weight: 400;
-    outline-color: rgb(239, 239, 241);
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+  &__twitch {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    font-size: clamp(30px, 6vw, 40px);
     color: white;
-    padding-left: 10px;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    transition: border 0.3s;
-    &:focus {
-      outline: none;
-      border: 2px solid $bttvPurple;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    &:hover {
+      color: $bttvPurple;
     }
   }
-  &__icon {
+  &__searchDiv {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    border: 0px solid rgba(255, 255, 255, 0);
-    background-color: rgba(255, 255, 255, 0.15);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width: clamp(40px, 7vw, 53px);
-    height: clamp(35px, 6vw, 45px);
-    cursor: pointer;
-    margin-left: 1px;
-    &__svg {
+    &__search {
+      width: clamp(200px, 35vw, 400px);
+      height: clamp(35px, 6vw, 45px);
+      font-size: 14px;
+      font-weight: 400;
+      outline-color: rgb(239, 239, 241);
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0);
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
       color: white;
-      font-size: clamp(20px, 3.5vw, 27px);
+      padding-left: 10px;
+      margin-top: 7px;
+      margin-bottom: 7px;
+      transition: border 0.3s;
+      &:focus {
+        outline: none;
+        border: 2px solid $bttvPurple;
+      }
     }
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0px solid rgba(255, 255, 255, 0);
+      background-color: rgba(255, 255, 255, 0.15);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      width: clamp(40px, 7vw, 53px);
+      height: clamp(35px, 6vw, 45px);
+      cursor: pointer;
+      margin-left: 1px;
+      &__svg {
+        color: white;
+        font-size: clamp(20px, 3.5vw, 27px);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0px 20px;
+    &__twitch {
+      position: relative;
+      left: 0px;
+    }
+  }
+}
+@media (max-width: 330px) {
+  .navbar {
+    padding: 0px 3px;
   }
 }

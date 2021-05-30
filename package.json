@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@iconify-icons/akar-icons": "^1.1.14",
+    "@iconify-icons/bi": "^1.1.5",
     "@iconify/react": "^1.1.4",
     "@types/react-router-dom": "^5.1.7"
   }
