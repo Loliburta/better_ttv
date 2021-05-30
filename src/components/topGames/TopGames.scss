@@ -1,24 +1,105 @@
-.topGames {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+.button {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  color: rgb(231, 218, 218);
+  justify-content: flex-start;
+  margin: 40px 0px 5px 50px;
+
+  &__option {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0px 15px 20px 15px;
+    font-family: $poppins;
+    transition: color 0.2s ease;
+    &:hover {
+      color: $bttvPurple;
+    }
+  }
+}
+
+.topGames {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 32px;
+  padding: 0px 50px 0px 50px;
   &__game {
     display: flex;
     flex-direction: column;
     text-align: center;
     margin: 10px;
     justify-content: center;
-    width: 200px;
     &__img {
-      width: 200px;
+      width: 100%;
+      max-width: 290px;
       height: auto;
     }
     &__name {
-      display: flex;
-      text-align: center;
-      flex-wrap: wrap;
-      margin: 0 auto;
+      text-align: left;
+      width: 100%;
+      &__text {
+        color: white;
+        font-weight: 400;
+        font-size: 20px;
+        font-family: "Roboto", sans-serif;
+        transition: color 0.2s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:hover {
+          color: $bttvPurple;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .button {
+    margin-left: 30px;
+  }
+  .topGames {
+    padding: 0px 30px 0px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .button {
+    margin-left: 12px;
+  }
+  .topGames {
+    padding: 0px 12px 0px 12px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+@media (max-width: 630px) {
+  .button {
+    margin-left: 10px;
+  }
+  .topGames {
+    padding: 0px 10px 0px 10px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 5px;
+  }
+}
+@media (max-width: 480px) {
+  .button {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 350px) {
+  .topGames {
+    padding: 0px 2px 0px 2px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-gap: 3px;
+    &__game {
+      &__img {
+        max-width: 130px;
+      }
     }
   }
 }

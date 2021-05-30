@@ -15,19 +15,16 @@ export const App = () => {
       <div>
         <Navbar />
         <Switch>
-          <Redirect exact from="/" to="/better_ttv" />
-          <Route path={["/better_ttv"]} exact>
+          <Redirect exact from="/" to={`${process.env.PUBLIC_URL}/`} />
+          <Route path={`${process.env.PUBLIC_URL}/`} exact>
             <Home />
           </Route>
           <Route
-            path={[
-              "/better_ttv/StreamersForGame/:GameName/:GameId",
-              "/StreamersForGame/:GameName/:GameId",
-            ]}
+            path={`${process.env.PUBLIC_URL}/StreamersForGame/:GameName/:GameId`}
           >
             <StreamersForGame />
           </Route>
-          <Route path={["/Streamer/:Name", "/better_ttv/Streamer/:Name"]}>
+          <Route path={`${process.env.PUBLIC_URL}/Streamer/:Name`}>
             <LiveStream />
           </Route>
         </Switch>

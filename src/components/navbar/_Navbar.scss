@@ -1,3 +1,4 @@
+@import "../../utils/Variables";
 .navbar {
   display: flex;
   width: 100vw;
@@ -22,7 +23,7 @@
     transition: border 0.3s;
     &:focus {
       outline: none;
-      border: 2px solid #772ce8;
+      border: 2px solid $bttvPurple;
     }
   }
   &__icon {
@@ -36,6 +37,7 @@
     width: clamp(40px, 7vw, 53px);
     height: clamp(35px, 6vw, 45px);
     cursor: pointer;
+    margin-left: 1px;
     &__svg {
       color: white;
       font-size: clamp(20px, 3.5vw, 27px);

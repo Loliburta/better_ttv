@@ -5,11 +5,10 @@ interface Props {
   box_art_url: string;
 }
 export const TopGame: React.FC<Props> = ({ id, name, box_art_url }) => {
-  const url = box_art_url.replace("{width}", "200").replace("{height}", "300");
+  const url = box_art_url.replace("{width}", "220").replace("{height}", "325");
   return (
     <div className="topGames__game">
-      <div>{id}</div>
-      <Link to={`/better_ttv/StreamersForGame/${name}/${id}`}>
+      <Link to={`${process.env.PUBLIC_URL}/StreamersForGame/${name}/${id}`}>
         <img
           src={url}
           loading="lazy"
@@ -17,7 +16,11 @@ export const TopGame: React.FC<Props> = ({ id, name, box_art_url }) => {
           className="topGames__game__img"
         />
       </Link>
-      <div className="topGames__game__name">{name}</div>
+      <div className="topGames__game__name">
+        <Link to={`${process.env.PUBLIC_URL}/StreamersForGame/${name}/${id}`}>
+          <p className="topGames__game__name__text">{name}</p>
+        </Link>
+      </div>
     </div>
   );
 };

@@ -22,7 +22,7 @@ export const TopStream: React.FC<Props> = ({
 
   return (
     <div className="topStreamers__stream">
-      <Link to={`/better_ttv/Streamer/${user_login}`}>
+      <Link to={`${process.env.PUBLIC_URL}/Streamer/${user_login}`}>
         <div className="topStreamers__stream__thumbnail">
           <img src={url} loading="lazy" alt="thumbnail" />
           <div className="topStreamers__stream__thumbnail__count">
