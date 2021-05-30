@@ -17,14 +17,19 @@ export const TopStream: React.FC<Props> = ({
   viewer_count,
 }) => {
   const url = thumbnail_url
-    .replace("{width}", "370")
-    .replace("{height}", "200");
+    .replace("{width}", "450")
+    .replace("{height}", "254");
 
   return (
     <div className="topStreamers__stream">
       <Link to={`${process.env.PUBLIC_URL}/Streamer/${user_login}`}>
         <div className="topStreamers__stream__thumbnail">
-          <img src={url} loading="lazy" alt="thumbnail" />
+          <img
+            className="topStreamers__stream__thumbnail__img"
+            src={url}
+            loading="lazy"
+            alt="thumbnail"
+          />
           <div className="topStreamers__stream__thumbnail__count">
             {viewer_count} widzów
           </div>

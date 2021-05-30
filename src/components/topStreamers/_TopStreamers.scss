@@ -1,18 +1,23 @@
 @import "../../utils/Variables.scss";
 
 .topStreamers {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 28px;
+  padding: 0px 50px 0px 50px;
   &__stream {
     display: flex;
     flex-direction: column;
-    margin: 10px;
     justify-content: center;
     &__thumbnail {
       display: flex;
       position: relative;
+      &__img {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+      }
       &__count {
         position: absolute;
         bottom: 10px;
@@ -26,9 +31,7 @@
     &__info {
       display: flex;
       justify-content: flex-start;
-      min-width: 100px;
-      max-width: 250px;
-      margin: 0 auto;
+      max-width: 100%;
       text-align: flex-start;
       flex-direction: column;
       &__title {
@@ -54,5 +57,43 @@
     }
   }
 }
+@media (max-width: 1600px) {
+  .topStreamers {
+    padding: 0px 30px 0px 30px;
+  }
+}
+@media (max-width: 1320px) {
+  .topStreamers {
+    padding: 0px 30px 0px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-gap: 15px;
+  }
+}
 
-//   text-overflow: ellipsis;
+@media (max-width: 900px) {
+  .topStreamers {
+    padding: 0px 30px 0px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .topStreamers {
+    padding: 0px 12px 0px 12px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-gap: 10px;
+  }
+}
+@media (max-width: 630px) {
+  .topStreamers {
+    padding: 0px 10px 0px 10px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 5px;
+  }
+}
+@media (max-width: 350px) {
+  .topStreamers {
+    padding: 0px 5px 0px 5px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 2px;
+  }
+}
