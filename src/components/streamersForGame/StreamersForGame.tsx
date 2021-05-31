@@ -18,17 +18,13 @@ interface ParamTypes {
   GameId: string;
 }
 export const StreamersForGame = () => {
-  console.log(useParams());
   const { GameName, GameId } = useParams<ParamTypes>();
-  console.log(GameId);
-  console.log(GameName);
 
   const [cursor, setCursor] = useState("");
   const [len, setLen] = useState(0);
   const [topStreamersList, setTopStreamersList] = useState<any>([]);
   let fetchStreams = async () => {
     let res = await getStreamers(cursor, GameId);
-    console.log(await res);
     setCursor(await res.pagination.cursor);
     let top = await res.data;
     console.log("called specific game streams api");

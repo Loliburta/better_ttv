@@ -18,10 +18,7 @@ interface ParamTypes {
   GameId: string;
 }
 export const TopStreamers = () => {
-  console.log(useParams());
-  const { GameName, GameId } = useParams<ParamTypes>();
-  console.log(GameId);
-  console.log(GameName);
+  const { GameId } = useParams<ParamTypes>();
 
   const [cursor, setCursor] = useState("");
   const [len, setLen] = useState(0);
@@ -31,7 +28,6 @@ export const TopStreamers = () => {
     console.log(await res);
     setCursor(await res.pagination.cursor);
     let top = await res.data;
-    console.log("called specific game streams api");
     setLen(len + top.length);
     setTopStreamersList([
       ...topStreamersList,

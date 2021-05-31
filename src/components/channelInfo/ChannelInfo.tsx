@@ -4,6 +4,7 @@ import { readableDate } from "../../utils/readableDate";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { Icon } from "@iconify/react";
 import profileSVG from "@iconify-icons/ant-design/profile-outlined";
+import closeSVG from "@iconify-icons/bi/x-lg";
 
 interface Props {
   user_id: string;
@@ -33,6 +34,9 @@ export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
           className={open ? "channelInfo" : "channelInfo--closed"}
           ref={profile}
         >
+          <div className="channelInfo__close" onClick={() => setOpen(false)}>
+            <Icon className="channelInfo__close__svg" icon={closeSVG} />
+          </div>
           <div className="channelInfo__top">
             <div className="channelInfo__top__image">
               <img
