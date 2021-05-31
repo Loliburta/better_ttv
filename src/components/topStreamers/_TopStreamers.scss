@@ -6,10 +6,12 @@
   grid-auto-rows: auto;
   grid-gap: 28px;
   padding: 0px 50px 0px 50px;
+  position: relative;
+
   &__stream {
     display: flex;
+    position: relative;
     flex-direction: column;
-    justify-content: center;
     &__thumbnail {
       display: flex;
       position: relative;
@@ -31,22 +33,26 @@
     &__info {
       display: flex;
       justify-content: flex-start;
-      max-width: 100%;
       text-align: flex-start;
       flex-direction: column;
       &__title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        max-width: 100%;
         font-family: $poppins;
         font-weight: 500;
         color: rgb(240, 222, 222);
       }
       &__username {
+        display: flex;
         font-family: $poppins;
-        font-weight: 400;
-        color: rgb(223, 198, 198);
-        font-size: 14px;
+        font-weight: 500;
+        color: rgb(240, 222, 222);
+        font-size: 16px;
+        &__text {
+          cursor: pointer;
+        }
       }
       &__game {
         font-family: $poppins;

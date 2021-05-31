@@ -11,6 +11,7 @@ interface streamProps {
   title: string;
   user_login: string;
   viewer_count: number;
+  user_id: string;
 }
 interface ParamTypes {
   GameName: string;
@@ -44,6 +45,7 @@ export const TopStreamers = () => {
             title={stream.title}
             user_login={stream.user_login}
             viewer_count={stream.viewer_count}
+            user_id={stream.user_id}
           />
         );
       }),

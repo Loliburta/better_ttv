@@ -12,7 +12,6 @@ export const TopGames = () => {
     setCursor(await res.pagination.cursor);
     let top = await res.data;
     setLen(len + top.length);
-    console.log("called games api");
     setTopGamesList([
       ...topGamesList,
       top.map((game: { id: string; name: string; box_art_url: string }) => {
