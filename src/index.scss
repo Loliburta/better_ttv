@@ -3,6 +3,8 @@
 
 @import "./utils/Variables";
 @import "./components/navbar/Navbar";
+@import "./components/navbar/queryResult/categoryItem/CategoryItem";
+@import "./components/navbar/queryResult/userItem/UserItem";
 @import "./components/streamersForGame/StreamersForGame";
 @import "./components/topGames/TopGames.scss";
 @import "./components/topStreamers/TopStreamers";
