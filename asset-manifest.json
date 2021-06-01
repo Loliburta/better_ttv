@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/better_ttv/static/css/main.ebf6670d.chunk.css",
-    "main.js": "/better_ttv/static/js/main.68a60875.chunk.js",
-    "main.js.map": "/better_ttv/static/js/main.68a60875.chunk.js.map",
+    "main.js": "/better_ttv/static/js/main.2a4d2016.chunk.js",
+    "main.js.map": "/better_ttv/static/js/main.2a4d2016.chunk.js.map",
     "runtime-main.js": "/better_ttv/static/js/runtime-main.1d77be84.js",
     "runtime-main.js.map": "/better_ttv/static/js/runtime-main.1d77be84.js.map",
     "static/js/2.c8b70663.chunk.js": "/better_ttv/static/js/2.c8b70663.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.1d77be84.js",
     "static/js/2.c8b70663.chunk.js",
     "static/css/main.ebf6670d.chunk.css",
-    "static/js/main.68a60875.chunk.js"
+    "static/js/main.2a4d2016.chunk.js"
   ]
 }
