@@ -10,8 +10,6 @@ export const getUser = async (user_id: string) => {
       Authorization: `Bearer ${oauthCode}`,
     }),
   });
-  console.log("user");
   const result = await res.json();
-  console.log(result.data[0]);
   return result.data[0];
 };

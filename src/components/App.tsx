@@ -24,6 +24,15 @@ export const App = () => {
           >
             <StreamersForGame />
           </Route>
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/redirect/:GameName/:GameId`}
+            render={(props) => (
+              <Redirect
+                to={`${process.env.PUBLIC_URL}/StreamersForGame/${props.match.params.GameName}/${props.match.params.GameId}`}
+              />
+            )}
+          />
           <Route path={`${process.env.PUBLIC_URL}/Streamer/:Name`}>
             <LiveStream />
           </Route>

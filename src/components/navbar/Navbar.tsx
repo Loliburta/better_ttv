@@ -14,53 +14,59 @@ interface CategoryItemProps {
 }
 export const Navbar = () => {
   const [open, setOpen] = useState(true);
-  const wrapperRef = useRef(null);
-  useClickOutside(wrapperRef, setOpen);
   const [cursor, setCursor] = useState("");
   const [query, setQuery] = useState("");
   const [searchResult, setSearchResult] = useState<any>(null);
+  const wrapperRef = useRef(null);
+  useClickOutside(wrapperRef, setOpen);
+
   useEffect(() => {
     if (!open) {
       setSearchResult(null);
       setQuery("");
     }
   }, [open]);
-  useEffect(() => {
-    debouncedSearch(query, cursor);
-  }, [query]);
+
   const handleChange = (e: React.ChangeEvent<any>) => {
     setQuery(e.target.value);
     if (cursor !== "") {
       setCursor("");
     }
   };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSearch = useCallback(
     debounce(async (query: string, cursor: string) => {
       let res = { data: [] };
       if (query.length > 0) {
         res = await searchCategories(query, cursor);
-        setSearchResult(
-          <div className={open ? "categoryItems" : "categoryItems--closed"}>
-            {res.data.map((val: CategoryItemProps) => {
-              return (
-                <CategoryItem
-                  key={val.id}
-                  id={val.id}
-                  name={val.name}
-                  box_art_url={val.box_art_url}
-                />
-              );
-            })}
-          </div>
-        );
+        if (res?.data?.length > 0) {
+          setSearchResult(
+            <div className={open ? "categoryItems" : "categoryItems--closed"}>
+              {res.data.map((val: CategoryItemProps) => {
+                return (
+                  <CategoryItem
+                    key={val.id}
+                    id={val.id}
+                    name={val.name}
+                    box_art_url={val.box_art_url}
+                  />
+                );
+              })}
+            </div>
+          );
+        } else {
+          setSearchResult(null);
+        }
       } else {
         res = { data: [] };
         setSearchResult(null);
       }
-      console.log(res);
     }, 500),
     []
   );
+  useEffect(() => {
+    debouncedSearch(query, cursor);
+  }, [query, cursor, debouncedSearch]);
   return (
     <div className="navbar">
       <Link className="navbar__twitch" to={`${process.env.PUBLIC_URL}/`}>
