@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import searchIcon from "@iconify-icons/akar-icons/search";
 import twitchIcon from "@iconify-icons/bi/twitch";
+import categoryIcon from "../../icons/Category.svg";
+import userIcon from "@iconify-icons/bx/bx-user";
 import {
   CategoryItem,
   CategoryItemProps as CategoryItemTypes,
@@ -123,15 +125,17 @@ export const Navbar = () => {
           {searchResult ? searchResult : ""}
         </div>
         <Grid component="label" container alignItems="center" spacing={1}>
-          <Grid item>Category</Grid>
+          <Grid item>
+            <img className="categoryIcon" src={categoryIcon} alt="category" />
+          </Grid>
           <Grid item>
             <Switch checked={option} onChange={() => setOption(!option)} />
           </Grid>
-          <Grid item>User</Grid>
+          <Grid item>
+            <Icon className="userIcon" icon={userIcon} />
+          </Grid>
         </Grid>
       </div>
     </div>
   );
 };
-
-

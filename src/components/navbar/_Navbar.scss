@@ -27,7 +27,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      width: clamp(150px, 40vw, 500px);
+      width: clamp(150px, 50vw, 500px);
       &__searchDiv {
         display: flex;
         width: 100%;
@@ -110,10 +110,23 @@
 }
 
 //customizing materialUI
+.categoryIcon {
+  margin-top: 5px;
+  width: 20px;
+}
+.userIcon {
+  margin-top: 4px;
+  font-size: 24px;
+  color: white;
+}
 .MuiGrid-spacing-xs-1 {
   width: 65px;
 }
 .MuiGrid-container {
   justify-content: flex-end;
-  width: 190px !important;
+  width: 150px !important;
+}
+
+.MuiSwitch-track {
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
