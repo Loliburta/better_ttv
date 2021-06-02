@@ -7,6 +7,17 @@
   background-color: black;
   justify-content: center;
   align-items: center;
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 15px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
   &__twitch {
     display: flex;
     align-items: center;
@@ -33,7 +44,6 @@
         width: 100%;
         flex-direction: row;
         align-items: center;
-
         position: relative;
         &__input {
           width: 100%;
