@@ -1,18 +1,26 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { searchCategories } from "../../utils/searchCategories";
+import { searchUsers } from "../../utils/searchUsers";
 import { debounce } from "lodash";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import searchIcon from "@iconify-icons/akar-icons/search";
 import twitchIcon from "@iconify-icons/bi/twitch";
-import { CategoryItem } from "./queryResult/categoryItem/CategoryItem";
+import {
+  CategoryItem,
+  CategoryItemProps as CategoryItemTypes,
+} from "./queryResult/categoryItem/CategoryItem";
 import { useClickOutside } from "../../hooks/useClickOutside";
-interface CategoryItemProps {
-  id: string;
-  name: string;
-  box_art_url: string;
-}
+import {
+  UserItem,
+  UserItemProps as UserItemTypes,
+} from "./queryResult/userItem/UserItem";
+import Switch from "@material-ui/core/Switch";
+import Grid from "@material-ui/core/Grid";
+
 export const Navbar = () => {
+  const [option, setOption] = useState(false);
+
   const [open, setOpen] = useState(true);
   const [cursor, setCursor] = useState("");
   const [query, setQuery] = useState("");
@@ -35,74 +43,95 @@ export const Navbar = () => {
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSearch = useCallback(
-    debounce(async (query: string, cursor: string) => {
+    debounce(async (query: string, cursor: string, option: boolean) => {
+      setSearchResult(null);
       let res = { data: [] };
-      if (query.length > 0) {
-        res = await searchCategories(query, cursor);
+      if (query.length > 0 && option === true) {
+        res = await searchUsers(query, cursor);
         if (res?.data?.length > 0) {
           setSearchResult(
-            <div className={open ? "categoryItems" : "categoryItems--closed"}>
-              {res.data.map((val: CategoryItemProps) => {
+            <div className={open ? "userItems" : "userItems--closed"}>
+              {res.data.map((usr: UserItemTypes) => {
                 return (
-                  <CategoryItem
-                    key={val.id}
-                    id={val.id}
-                    name={val.name}
-                    box_art_url={val.box_art_url}
+                  <UserItem
+                    key={usr.id}
+                    id={usr.id}
+                    display_name={usr.display_name}
+                    game_name={usr.game_name}
+                    game_id={usr.game_id}
+                    is_live={usr.is_live}
                   />
                 );
               })}
             </div>
           );
-        } else {
-          setSearchResult(null);
         }
-      } else {
-        res = { data: [] };
-        setSearchResult(null);
+      } else if (query.length > 0) {
+        res = await searchCategories(query, cursor);
+        if (res?.data?.length > 0) {
+          setSearchResult(
+            <div className={open ? "categoryItems" : "categoryItems--closed"}>
+              {res.data.map((cat: CategoryItemTypes) => {
+                return (
+                  <CategoryItem
+                    key={cat.id}
+                    id={cat.id}
+                    name={cat.name}
+                    box_art_url={cat.box_art_url}
+                  />
+                );
+              })}
+            </div>
+          );
+        }
       }
     }, 500),
     []
   );
   useEffect(() => {
-    debouncedSearch(query, cursor);
-  }, [query, cursor, debouncedSearch]);
+    debouncedSearch(query, cursor, option);
+  }, [query, cursor, debouncedSearch, option]);
   return (
     <div className="navbar">
       <Link className="navbar__twitch" to={`${process.env.PUBLIC_URL}/`}>
         <Icon icon={twitchIcon} />
       </Link>
-      <div className="navbar__wrapper" ref={wrapperRef}>
-        <div
-          className="navbar__wrapper__searchDiv"
-          onClick={() => setOpen(true)}
-        >
-          <input
-            type="text"
-            className="navbar__wrapper__searchDiv__search"
-            placeholder="Search"
-            onChange={(e) => handleChange(e)}
-            value={query}
-            id="input"
-          ></input>
-          <label htmlFor="input">
-            <div className="navbar__wrapper__searchDiv__icon">
-              <Icon
-                icon={searchIcon}
-                className="navbar__wrapper__searchDiv__icon__svg"
-              />
-            </div>
-          </label>
-        </div>
+      <div className="navbar__search">
+        <div className="navbar__search__mid" ref={wrapperRef}>
+          <div
+            className="navbar__search__mid__searchDiv"
+            onClick={() => setOpen(true)}
+          >
+            <input
+              type="text"
+              className="navbar__search__mid__searchDiv__input"
+              placeholder="Search"
+              onChange={(e) => handleChange(e)}
+              value={query}
+              id="input"
+            ></input>
 
-        {searchResult ? searchResult : ""}
+            <label htmlFor="input">
+              <div className="navbar__search__mid__searchDiv__icon">
+                <Icon
+                  icon={searchIcon}
+                  className="navbar__search__mid__searchDiv__icon__svg"
+                />
+              </div>
+            </label>
+          </div>
+          {searchResult ? searchResult : ""}
+        </div>
+        <Grid component="label" container alignItems="center" spacing={1}>
+          <Grid item>Category</Grid>
+          <Grid item>
+            <Switch checked={option} onChange={() => setOption(!option)} />
+          </Grid>
+          <Grid item>User</Grid>
+        </Grid>
       </div>
     </div>
   );
 };
 
-// data: Array(36)
-// 0:
-// box_art_url: "https://static-cdn.jtvnw.net/ttv-boxart/./League%20of%20Legends:%20Wild%20Rift-52x72.jpg"
-// id: "514858"
-// name: "League of Legends: Wild Rift"
+

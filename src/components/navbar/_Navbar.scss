@@ -20,53 +20,67 @@
       color: $bttvPurple;
     }
   }
-  &__wrapper {
-    width: clamp(241px, 45vw, 453px);
-    &__searchDiv {
+  &__search {
+    display: flex;
+    flex-direction: row;
+    &__mid {
       display: flex;
-      width: 100%;
-      flex-direction: row;
-      align-items: center;
-      position: relative;
-      display: flex;
-      &__search {
-        width: 100%;
-        height: clamp(35px, 6vw, 45px);
-        font-size: 14px;
-        font-weight: 400;
-        outline-color: rgb(239, 239, 241);
-        background-color: rgba(255, 255, 255, 0.2);
-        border: 2px solid rgba(255, 255, 255, 0);
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        color: white;
-        padding-left: 10px;
-        margin-top: 7px;
-        margin-bottom: 7px;
-        transition: border 0.3s;
-        &:focus {
-          outline: none;
-          border: 2px solid $bttvPurple;
-        }
-      }
-      &__icon {
+      flex-direction: column;
+      justify-content: flex-end;
+      width: clamp(150px, 40vw, 500px);
+      &__searchDiv {
         display: flex;
-        justify-content: center;
+        width: 100%;
+        flex-direction: row;
         align-items: center;
-        border: 0px solid rgba(255, 255, 255, 0);
-        background-color: rgba(255, 255, 255, 0.15);
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-        width: clamp(40px, 7vw, 53px);
-        height: clamp(35px, 6vw, 45px);
-        cursor: pointer;
-        margin-left: 1px;
-        &__svg {
+
+        position: relative;
+        &__input {
+          width: 100%;
+          height: clamp(35px, 6vw, 45px);
+          font-size: 14px;
+          font-weight: 400;
+          outline-color: rgb(239, 239, 241);
+          background-color: rgba(255, 255, 255, 0.2);
+          border: 2px solid rgba(255, 255, 255, 0);
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
           color: white;
-          font-size: clamp(20px, 3.5vw, 27px);
+          padding-left: 10px;
+          margin-top: 7px;
+          margin-bottom: 7px;
+          transition: border 0.3s;
+          &:focus {
+            outline: none;
+            border: 2px solid $bttvPurple;
+          }
+        }
+        &__icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 0px solid rgba(255, 255, 255, 0);
+          background-color: rgba(255, 255, 255, 0.15);
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          width: clamp(40px, 7vw, 53px);
+          height: clamp(35px, 6vw, 45px);
+          cursor: pointer;
+          margin-left: 1px;
+          &__svg {
+            color: white;
+            font-size: clamp(20px, 3.5vw, 27px);
+          }
         }
       }
     }
+  }
+}
+@media (max-width: 900px) {
+  .navbar__search {
+    padding-right: 20px;
+    justify-content: flex-end;
+    width: 100%;
   }
 }
 
@@ -74,6 +88,15 @@
   .navbar {
     justify-content: space-between;
     padding: 0px 20px;
+    &__search {
+      padding-right: 0px;
+      width: initial;
+      align-items: flex-end;
+      flex-direction: column-reverse;
+      &__mid {
+        width: clamp(230px, 60vw, 430px);
+      }
+    }
     &__twitch {
       position: relative;
       left: 0px;
@@ -84,4 +107,13 @@
   .navbar {
     padding: 0px 3px;
   }
+}
+
+//customizing materialUI
+.MuiGrid-spacing-xs-1 {
+  width: 65px;
+}
+.MuiGrid-container {
+  justify-content: flex-end;
+  width: 190px !important;
 }

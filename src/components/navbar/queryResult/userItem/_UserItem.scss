@@ -1,0 +1,32 @@
+.userItems--closed {
+  display: none;
+}
+.userItems {
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  margin-bottom: -500px;
+  overflow-y: auto;
+  background-color: #18181b;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 16px 0px,
+    rgba(0, 0, 0, 0.4) 0px 0px 4px 0px;
+  &__item {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 0px 5px 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #25252a;
+    }
+  }
+}
