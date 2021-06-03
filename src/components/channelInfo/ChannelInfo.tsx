@@ -32,6 +32,7 @@ export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
       {open ? (
         <div
           className={open ? "channelInfo" : "channelInfo--closed"}
+          id = "channelInfo"
           ref={profile}
         >
           <div className="channelInfo__close" onClick={() => setOpen(false)}>

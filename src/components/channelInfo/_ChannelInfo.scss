@@ -2,17 +2,16 @@
   display: none;
 }
 .channelInfo {
-  display: visible;
   display: flex;
   position: relative;
-  margin-bottom: -200px;
+  margin-bottom: -197px;
   flex-direction: column;
   top: 0px;
   max-width: 350px;
   min-width: 200px;
-  height: 200px;
+  height: 197px;
   background-color: rgba(47, 40, 40, 0.8);
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   border-bottom-right-radius: 3px;
   color: #f9e7e7;
   z-index: 100;
@@ -80,6 +79,8 @@
   &__description {
     justify-content: center;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 .profileIcon--closed {
