@@ -16,10 +16,9 @@
   border-bottom-right-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 6px 16px 0px,
     rgba(0, 0, 0, 0.4) 0px 0px 4px 0px;
-  &__item {
+  &__item,
+  &__item--short {
     margin-top: 10px;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,5 +32,31 @@
       color: white;
       margin-right: 10px;
     }
+    &__desc {
+      display: flex;
+      flex-direction: column;
+      &__top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        &__name {
+          color: white;
+        }
+        &__dot {
+          display: block;
+          margin-left: 7px;
+          background-color: red;
+          width: 10px;
+          height: 10px;
+          border-radius: 100%;
+        }
+      }
+      &__game {
+        font-size: 10px;
+      }
+    }
   }
+}
+.userItems__item--short {
+  padding: 13px 0px 13px 10px;
 }
