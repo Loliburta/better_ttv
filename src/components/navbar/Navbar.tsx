@@ -22,6 +22,7 @@ import {
 } from "./queryResult/userItem/UserItem";
 import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
+
 export const Navbar = () => {
   type resType = UserTypes | CategoryTypes | { data: [] };
   const [option, setOption] = useState(false);
@@ -31,13 +32,6 @@ export const Navbar = () => {
   const [searchResult, setSearchResult] = useState<JSX.Element | null>(null);
   const wrapperRef = useRef(null);
   useClickOutside(wrapperRef, setOpen);
-
-  useEffect(() => {
-    if (!open) {
-      setSearchResult(null);
-      setQuery("");
-    }
-  }, [open]);
 
   const handleChange = (e: React.ChangeEvent<any>) => {
     setQuery(e.target.value);
@@ -54,7 +48,7 @@ export const Navbar = () => {
         res = await searchUsers(query, cursor);
         if (res?.data?.length > 0) {
           setSearchResult(
-            <div className={open ? "userItems" : "userItems--closed"}>
+            <div className="userItems">
               {res.data.map((usr: UserItemTypes) => {
                 return (
                   <UserItem
@@ -74,7 +68,7 @@ export const Navbar = () => {
         res = await searchCategories(query, cursor);
         if (res?.data?.length > 0) {
           setSearchResult(
-            <div className={open ? "categoryItems" : "categoryItems--closed"}>
+            <div className="categoryItems">
               {res.data.map((cat: CategoryItemTypes) => {
                 return (
                   <CategoryItem
@@ -100,8 +94,8 @@ export const Navbar = () => {
       <Link className="navbar__twitch" to={`${process.env.PUBLIC_URL}/`}>
         <Icon icon={twitchIcon} />
       </Link>
-      <div className="navbar__search">
-        <div className="navbar__search__mid" ref={wrapperRef}>
+      <div className="navbar__search" ref={wrapperRef}>
+        <div className="navbar__search__mid">
           <div
             className="navbar__search__mid__searchDiv"
             onClick={() => setOpen(true)}
@@ -124,14 +118,18 @@ export const Navbar = () => {
               </div>
             </label>
           </div>
-          {searchResult ? searchResult : ""}
+          {open ? searchResult : ""}
         </div>
         <Grid component="label" container alignItems="center" spacing={1}>
           <Grid item>
             <img className="categoryIcon" src={categoryIcon} alt="category" />
           </Grid>
           <Grid item>
-            <Switch checked={option} onChange={() => setOption(!option)} />
+            <Switch
+              checked={option}
+              onClick={() => setOpen(true)}
+              onChange={() => setOption(!option)}
+            />
           </Grid>
           <Grid item>
             <Icon className="userIcon" icon={userIcon} />

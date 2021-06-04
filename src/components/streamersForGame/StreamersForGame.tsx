@@ -15,9 +15,8 @@ export const StreamersForGame = () => {
   const [topStreamersList, setTopStreamersList] = useState<any>([]);
   let fetchStreams = async () => {
     let res = await getStreamers(cursor, GameId);
-    setCursor(await res.pagination.cursor);
-    let top = await res.data;
-    console.log("called specific game streams api");
+    setCursor(res.pagination.cursor);
+    let top = res.data;
     setLen(len + top.length);
     setTopStreamersList([
       ...topStreamersList,

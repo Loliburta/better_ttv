@@ -16,7 +16,6 @@ export const UserItem: React.FC<UserItemProps> = ({
   id,
   is_live,
 }) => {
-  console.log(is_live);
   return (
     <>
       {is_live ? (

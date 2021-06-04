@@ -8,9 +8,9 @@ export const TopGames = () => {
   const [cursor, setCursor] = useState("");
   const [len, setLen] = useState(0);
   const fetchGames = async () => {
-    let res = await getGames(cursor);
-    setCursor(await res.pagination.cursor);
-    let top = await res.data;
+    const res = await getGames(cursor);
+    setCursor(res.pagination.cursor);
+    const top = res.data;
     setLen(len + top.length);
     setTopGamesList([
       ...topGamesList,

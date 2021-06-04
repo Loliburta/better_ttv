@@ -71,7 +71,7 @@ export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
         </div>
       ) : (
         <div
-          className={open ? "profileIcon--closed" : "profileIcon"}
+          className={"profileIcon"}
           onClick={() => setOpen(true)}
         >
           {icon}
