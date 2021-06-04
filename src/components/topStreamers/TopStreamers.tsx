@@ -1,37 +1,26 @@
 import { useState, useEffect } from "react";
 import { getStreamers } from "../../utils/getStreamers";
-import { TopStream } from "./topStream/TopStream";
+import { TopStream, StreamProps } from "./topStream/TopStream";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useParams } from "react-router-dom";
 
-interface streamProps {
-  game_name: string;
-  language: string;
-  thumbnail_url: string;
-  title: string;
-  user_login: string;
-  viewer_count: number;
-  user_id: string;
-}
 interface ParamTypes {
   GameName: string;
   GameId: string;
 }
 export const TopStreamers = () => {
   const { GameId } = useParams<ParamTypes>();
-
   const [cursor, setCursor] = useState("");
   const [len, setLen] = useState(0);
   const [topStreamersList, setTopStreamersList] = useState<any>([]);
-  let fetchStreams = async () => {
-    let res = await getStreamers(cursor, GameId);
-    console.log(await res);
+  const fetchStreams = async () => {
+    const res = await getStreamers(cursor, GameId);
     setCursor(await res.pagination.cursor);
-    let top = await res.data;
+    const top = await res.data;
     setLen(len + top.length);
     setTopStreamersList([
       ...topStreamersList,
-      top.map((stream: streamProps) => {
+      top.map((stream: StreamProps) => {
         return (
           <TopStream
             key={stream.user_login}

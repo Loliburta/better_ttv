@@ -1,19 +1,29 @@
-const clientId = process.env.REACT_APP_CLIENT_ID;
-const oauthCode = process.env.REACT_APP_OAUTH_CODE;
-
-export const searchCategories = async (query: string, cursor: string) => {
+import { headers } from "./headers";
+export interface ResultTypes {
+  data: [
+    {
+      id: string;
+      name: string;
+      box_art_url: string;
+    }
+  ];
+  pagination: {
+    cursor: string;
+  };
+}
+export const searchCategories = async (
+  query: string,
+  cursor: string
+): Promise<ResultTypes> => {
+  console.log("Search categories");
   let url = `https://api.twitch.tv/helix/search/categories?query=${query}&first=40`;
   if (cursor) {
     url += `&after=${cursor}`;
   }
   const res = await fetch(url, {
     method: "GET",
-    headers: new Headers({
-      "Client-ID": clientId!,
-      Authorization: `Bearer ${oauthCode}`,
-    }),
+    headers,
   });
-  console.log("search categories");
   const result = await res.json();
   return result;
 };

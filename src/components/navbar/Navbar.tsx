@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { searchCategories } from "../../utils/searchCategories";
-import { searchUsers } from "../../utils/searchUsers";
+import {
+  searchCategories,
+  ResultTypes as CategoryTypes,
+} from "../../utils/searchCategories";
+import { searchUsers, ResultTypes as UserTypes } from "../../utils/searchUsers";
 import { debounce } from "lodash";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
@@ -19,14 +22,13 @@ import {
 } from "./queryResult/userItem/UserItem";
 import Switch from "@material-ui/core/Switch";
 import Grid from "@material-ui/core/Grid";
-
 export const Navbar = () => {
+  type resType = UserTypes | CategoryTypes | { data: [] };
   const [option, setOption] = useState(false);
-
   const [open, setOpen] = useState(true);
   const [cursor, setCursor] = useState("");
   const [query, setQuery] = useState("");
-  const [searchResult, setSearchResult] = useState<any>(null);
+  const [searchResult, setSearchResult] = useState<JSX.Element | null>(null);
   const wrapperRef = useRef(null);
   useClickOutside(wrapperRef, setOpen);
 
@@ -47,7 +49,7 @@ export const Navbar = () => {
   const debouncedSearch = useCallback(
     debounce(async (query: string, cursor: string, option: boolean) => {
       setSearchResult(null);
-      let res = { data: [] };
+      let res: resType = { data: [] };
       if (query.length > 0 && option === true) {
         res = await searchUsers(query, cursor);
         if (res?.data?.length > 0) {

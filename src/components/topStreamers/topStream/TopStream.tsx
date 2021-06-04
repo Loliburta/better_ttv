@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ChannelInfo } from "../../channelInfo/ChannelInfo";
 
-interface Props {
+export interface StreamProps {
   game_name: string;
   language: string;
   thumbnail_url: string;
@@ -11,7 +11,8 @@ interface Props {
   viewer_count: number;
   user_id: string;
 }
-export const TopStream: React.FC<Props> = ({
+
+export const TopStream: React.FC<StreamProps> = ({
   game_name,
   language,
   thumbnail_url,
@@ -20,7 +21,7 @@ export const TopStream: React.FC<Props> = ({
   viewer_count,
   user_id,
 }) => {
-  const [profile, setProfile] = useState<any>();
+  const [profile, setProfile] = useState<JSX.Element>();
   const fetchProfile = async () => {
     if (!profile) {
       setProfile(<ChannelInfo user_id={user_id} />);

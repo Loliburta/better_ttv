@@ -1,15 +1,29 @@
-const clientId = process.env.REACT_APP_CLIENT_ID;
-const oauthCode = process.env.REACT_APP_OAUTH_CODE;
+import { headers } from "./headers";
 
+interface ResultTypes {
+  data: [
+    {
+      id: string;
+      login: string;
+      display_name: string;
+      type: string;
+      broadcaster_type: string;
+      description: string;
+      profile_image_url: string;
+      offline_image_url: string;
+      view_count: number;
+      email: string;
+      created_at: string;
+    }
+  ];
+}
 export const getUser = async (user_id: string) => {
-  let url = `https://api.twitch.tv/helix/users?id=${user_id}`;
+  console.log("Get User");
+  const url = `https://api.twitch.tv/helix/users?id=${user_id}`;
   const res = await fetch(url, {
     method: "GET",
-    headers: new Headers({
-      "Client-ID": clientId!,
-      Authorization: `Bearer ${oauthCode}`,
-    }),
+    headers,
   });
-  const result = await res.json();
+  const result: ResultTypes = await res.json();
   return result.data[0];
 };

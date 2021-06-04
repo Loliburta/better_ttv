@@ -9,10 +9,17 @@ import closeSVG from "@iconify-icons/bi/x-lg";
 interface Props {
   user_id: string;
 }
+interface UserTypes {
+  profile_image_url: string;
+  display_name: string;
+  broadcaster_type: string;
+  view_count: number;
+  description: string;
+}
 export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
   const [open, setOpen] = useState(false);
-  const [icon, setIcon] = useState<JSX.Element | null>(null);
-  const [user, setUser] = useState<any>({});
+  const [icon, setIcon] = useState<JSX.Element>();
+  const [user, setUser] = useState<UserTypes>();
   const [date, setDate] = useState("");
   const profile = useRef(null);
   useEffect(() => {
@@ -26,13 +33,12 @@ export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
     fetchUser();
   }, [user_id]);
   useClickOutside(profile, setOpen);
-
   return (
     <>
       {open ? (
         <div
           className={open ? "channelInfo" : "channelInfo--closed"}
-          id = "channelInfo"
+          id="channelInfo"
           ref={profile}
         >
           <div className="channelInfo__close" onClick={() => setOpen(false)}>
@@ -42,25 +48,25 @@ export const ChannelInfo: React.FC<Props> = ({ user_id }) => {
             <div className="channelInfo__top__image">
               <img
                 className="channelInfo__top__image__img"
-                src={user.profile_image_url}
+                src={user?.profile_image_url}
                 alt="profile"
               />
             </div>
             <div className="channelInfo__top__info">
               <div className="channelInfo__top__info__name">
-                {user.display_name}
+                {user?.display_name}
               </div>
               <div className="channelInfo__top__info__type">
-                {user.broadcaster_type}
+                {user?.broadcaster_type}
               </div>
               <div className="channelInfo__top__info__views">
-                {user.view_count} views
+                {user?.view_count} views
               </div>
               <div className="channelInfo__top__info__created">{date}</div>
             </div>
           </div>
           <div className="channelInfo__description">
-            <div className="">{user.description}</div>
+            <div className="">{user?.description}</div>
           </div>
         </div>
       ) : (
