@@ -26,7 +26,9 @@ export const TopStreamers = () => {
             key={stream.user_login}
             game_name={stream.game_name}
             language={stream.language}
-            thumbnail_url={stream.thumbnail_url}
+            thumbnail_url={stream.thumbnail_url
+              .replace("{width}", "450")
+              .replace("{height}", "254")}
             title={stream.title}
             user_login={stream.user_login}
             viewer_count={stream.viewer_count}

@@ -20,7 +20,9 @@ export const TopGames = () => {
             key={game.id}
             id={game.id}
             name={game.name}
-            box_art_url={game.box_art_url}
+            box_art_url={game.box_art_url
+              .replace("{width}", "220")
+              .replace("{height}", "325")}
           />
         );
       }),

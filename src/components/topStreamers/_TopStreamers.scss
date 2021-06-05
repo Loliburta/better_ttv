@@ -69,8 +69,11 @@
       &__game {
         font-family: $poppins;
         font-weight: 400;
-        color: rgb(223, 198, 198);
+        color: hsl(0, 28%, 83%);
         font-size: 14px;
+      }
+      &__language {
+        color: hsl(0, 28%, 60%);
       }
     }
   }

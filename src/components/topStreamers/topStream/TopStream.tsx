@@ -27,9 +27,7 @@ export const TopStream: React.FC<StreamProps> = ({
       setProfile(<ChannelInfo user_id={user_id} />);
     }
   };
-  const url = thumbnail_url
-    .replace("{width}", "450")
-    .replace("{height}", "254");
+
   return (
     <>
       <div className="topStreamers__stream">
@@ -39,7 +37,7 @@ export const TopStream: React.FC<StreamProps> = ({
           <div className="topStreamers__stream__thumbnail">
             <img
               className="topStreamers__stream__thumbnail__img"
-              src={url}
+              src={thumbnail_url}
               loading="lazy"
               alt="thumbnail"
             />
@@ -59,7 +57,7 @@ export const TopStream: React.FC<StreamProps> = ({
             </p>
           </div>
           <div className="topStreamers__stream__info__game">{game_name}</div>
-          <div>{language}</div>
+          <div className="topStreamers__stream__info__language">{language}</div>
         </div>
       </div>
     </>

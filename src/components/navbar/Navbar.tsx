@@ -131,8 +131,8 @@ export const Navbar = () => {
               onChange={() => setOption(!option)}
             />
           </Grid>
-          <Grid item>
-            <Icon className="userIcon" icon={userIcon} />
+          <Grid item >
+            <Icon  className="userIcon" icon={userIcon} />
           </Grid>
         </Grid>
       </div>
