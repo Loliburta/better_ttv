@@ -17,7 +17,7 @@ export const TopGame: React.FC<Props> = ({ id, name, box_art_url }) => {
       </Link>
       <div className="topGames__game__name">
         <Link to={`${process.env.PUBLIC_URL}/StreamersForGame/${name}/${id}`}>
-          <p className="topGames__game__name__text">{name}</p>
+          <span className="topGames__game__name__text">{name}</span>
         </Link>
       </div>
     </div>
